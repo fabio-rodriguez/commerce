@@ -1,0 +1,38 @@
+body {
+    padding: 10px;
+}
+
+label[for="id_description"]  {
+    padding-bottom: 170px;
+}
+
+#id_description {
+    width: 90%;
+    height: 200px;
+    margin-left: 10px;
+}
+
+.create-listing div{
+    margin-top: 20px;
+}
+
+.create-listing label{
+    width: 80px;
+}
+
+#id_title{
+    width: 85%;
+}
+
+#id_img_url{
+    width: 87%;
+}
+
+label[for="id_active"]  {
+    margin-left: 35px;
+}
+
+.create-listing .btn{
+    margin-left: 80px;
+    width: 60%;
+}

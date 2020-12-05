@@ -1,0 +1,41 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+<h2>Category: {{category.name}}</h2>
+<div class="container">
+    <div class="row">
+{% for listing in category.listings.all %}
+    {% if listing.active %}
+    <div class = "col-md-4 col-sm-6 col-xs-12">
+    <div class="card" style="margin-top: 10px;">
+        {% if not listing.img_url %}
+            {% load static %}
+            <img style="height: 230px;" src="{% static 'auctions/no_picture.png' %}" alt="No image">
+            {% else %}
+                <img src="{{listing.img_url}}" class="card-img-top" style="text-align: center; height: 230px;">
+       {% endif %}
+        <div class="card-body">
+            <h5 class="card-title" style="white-space:nowrap; overflow: hidden;
+            text-overflow: ellipsis"> {{listing.title}} </h5>
+            <h5 class="card-text">${{listing.initial_bid}}</h5>
+            <p class="card-text" style="white-space:nowrap; overflow: hidden;
+            text-overflow: ellipsis">{{listing.description}}</p>
+            <p class="card-text">Created {{listing.date_creation}}</p>
+            <a href="{% url 'listing' listing.id %}" class="btn btn-primary"> See more</a>
+        </div>
+    </div>
+</div>
+    {% endif %}
+{% endfor%}
+</div>
+</div>
+
+{% if not category.listings.all or not active_listings %}
+<ul>
+ <li><h4>There are not active Listings for this category</h4>
+ </li>
+</ul>
+{% endif %}
+
+{% endblock %}
